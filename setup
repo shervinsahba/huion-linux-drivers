@@ -1,0 +1,17 @@
+DRIVER_DIR=/opt/huion-linux-drivers/    # install directory
+
+
+# Setup driver directory and copy over files
+
+mkdir ${DRIVER_DIR}
+cp huion-tablet-driver.py ${DRIVER_DIR}
+cp config.ini ${DRIVER_DIR}
+
+
+# Automatic driver loading/unloading
+# See https://github.com/joseluis/huion-linux-drivers/issues/35
+
+cp huion-driver.service /etc/systemd/system/
+cp 99-huion.rules /etc/udev/rules.d/
+systemctl daemon-reload
+udevadm control --reload

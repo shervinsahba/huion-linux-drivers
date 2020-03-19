@@ -1,0 +1,9 @@
+[Unit]
+Description=Huion Tablet Driver
+
+[Service]
+Type=idle
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/tmp/xauth-1000-_0
+WorkingDirectory=/opt/huion-linux-drivers/
+ExecStart=/usr/bin/python3 huion-tablet-driver.py
